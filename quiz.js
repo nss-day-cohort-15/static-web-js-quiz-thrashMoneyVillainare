@@ -1,25 +1,28 @@
 
 var growButton = document.getElementById('grow_button');
-growButton.addEventListener("click", function () {
-  var tree = {};
-  tree.height = treeHeight.value;
-  tree.branch = branchChar.value;
-  runner(tree)
-});
 var showTree = document.getElementById('show_tree');
 var branchChar = document.getElementById('branch_character');
 var treeHeight = document.getElementById('tree_height');
 document.body.addEventListener("keyup", enterF);
 
-function enterF (e) {
-  if (e.key === 'Enter') {
-    var tree = {};
-    tree.height = treeHeight.value;
-    tree.branch = branchChar.value;
-    runner (tree);
-    console.log(tree);
+function printTree() {
+  if(treeHeight.value === "" || branchChar.value === ""){
+    alert("Please enter values for both fields")
+  } else {
+  var tree = {};
+  tree.height = treeHeight.value;
+  tree.branch = branchChar.value;
+  runner(tree)
   }
 }
+
+function enterF (e) {
+  if (e.key === 'Enter') {
+    printTree();
+  }
+}
+
+growButton.addEventListener("click", printTree)
 
 function runner (tree) {
   var spaces = " ";
